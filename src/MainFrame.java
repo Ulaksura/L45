@@ -54,7 +54,7 @@ public class MainFrame extends JFrame {
             MainFrame.this.openGraphics(MainFrame.this.fileChooser.getSelectedFile());
              }
         };
-        
+
     fileMenu.add(openGraphicsAction);
     Action resetGraphicsAction = new AbstractAction("Отметить все изменения") {
     public void actionPerformed(ActionEvent event) {

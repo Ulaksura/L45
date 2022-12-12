@@ -350,6 +350,20 @@ public class GraphicsDisplay extends JPanel {
                 }
                 GraphicsDisplay.this.repaint();
             }
+            if(ev.getButton() == 2)
+            {
+                GraphicsDisplay.this.minX = ((Double[])graphicsData.get(0))[0].doubleValue();
+                GraphicsDisplay.this.maxX = ((Double[])graphicsData.get(graphicsData.size() - 1))[0].doubleValue();
+                GraphicsDisplay.this.minY = ((Double[])graphicsData.get(0))[1].doubleValue();
+                GraphicsDisplay.this.maxY = GraphicsDisplay.this.minY;
+                for (int i = 1; i < graphicsData.size(); i++) {
+                    if (((Double[])graphicsData.get(i))[1].doubleValue() < GraphicsDisplay.this.minY)
+                        GraphicsDisplay.this.minY = ((Double[])graphicsData.get(i))[1].doubleValue();
+                    if (((Double[])graphicsData.get(i))[1].doubleValue() > GraphicsDisplay.this.maxY)
+                        GraphicsDisplay.this.maxY = ((Double[])graphicsData.get(i))[1].doubleValue();
+                }
+                zoomToRegion(GraphicsDisplay.this.minX, GraphicsDisplay.this.maxY, GraphicsDisplay.this.maxX, GraphicsDisplay.this.minY);
+            }
         }
 
         public void mousePressed(MouseEvent ev) {
