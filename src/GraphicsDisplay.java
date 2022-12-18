@@ -65,7 +65,7 @@ public class GraphicsDisplay extends JPanel {
         setBackground(Color.WHITE);
         this.axisStroke = new BasicStroke(2.0F, 0, 0, 10.0F, null, 0.0F);
         this.gridStroke = new BasicStroke(1.0F, 0, 0, 10.0F, new float[] { 4.0F, 4.0F }, 0.0F);
-        this.markerStroke = new BasicStroke(3.0F, 0, 0, 10.0F, new float[]{9,3,3,3,3,3,6,3,6,3}, 0.0F);
+        this.markerStroke = new BasicStroke(3.0F, BasicStroke.CAP_BUTT, 0, 10.0F, new float[]{9,3,3,3,3,3,6,3,6,3}, 0.0F);
         this.selectionStroke = new BasicStroke(1.0F, 0, 0, 10.0F, new float[] { 10.0F, 10.0F }, 0.0F);
         this.axisFont = new Font("Serif", 1, 36);
         this.labelsFont = new Font("Serif", 0, 10);
@@ -350,20 +350,7 @@ public class GraphicsDisplay extends JPanel {
                 }
                 GraphicsDisplay.this.repaint();
             }
-            if(ev.getButton() == 2)
-            {
-                GraphicsDisplay.this.minX = ((Double[])graphicsData.get(0))[0].doubleValue();
-                GraphicsDisplay.this.maxX = ((Double[])graphicsData.get(graphicsData.size() - 1))[0].doubleValue();
-                GraphicsDisplay.this.minY = ((Double[])graphicsData.get(0))[1].doubleValue();
-                GraphicsDisplay.this.maxY = GraphicsDisplay.this.minY;
-                for (int i = 1; i < graphicsData.size(); i++) {
-                    if (((Double[])graphicsData.get(i))[1].doubleValue() < GraphicsDisplay.this.minY)
-                        GraphicsDisplay.this.minY = ((Double[])graphicsData.get(i))[1].doubleValue();
-                    if (((Double[])graphicsData.get(i))[1].doubleValue() > GraphicsDisplay.this.maxY)
-                        GraphicsDisplay.this.maxY = ((Double[])graphicsData.get(i))[1].doubleValue();
-                }
-                zoomToRegion(GraphicsDisplay.this.minX, GraphicsDisplay.this.maxY, GraphicsDisplay.this.maxX, GraphicsDisplay.this.minY);
-            }
+
         }
 
         public void mousePressed(MouseEvent ev) {
